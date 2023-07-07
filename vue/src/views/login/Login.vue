@@ -47,7 +47,7 @@ export default {
         if(res.code==='200'){
           this.$router.push('/')
           console.log(res.data)
-          this.$notify.success("登录成功")
+          this.$notify.success("登录成功1")
         }
       })
     }
