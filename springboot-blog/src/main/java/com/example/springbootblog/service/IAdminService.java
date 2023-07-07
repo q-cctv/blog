@@ -1,0 +1,13 @@
+package com.example.springbootblog.service;
+
+import com.example.springbootblog.controller.dto.LoginDTO;
+import com.example.springbootblog.controller.request.LoginRequest;
+import com.example.springbootblog.entity.Admin;
+
+public interface IAdminService {
+
+    void register(Admin admin);
+
+    LoginDTO login(LoginRequest loginRequest);
+
+}
