@@ -25,7 +25,7 @@
 
 <script>
 import request from "@/utils/request";
-
+import Cookies from "js-cookie"
 export default {
   name: "Login",
   data(){
@@ -43,13 +43,23 @@ export default {
       this.form={}
     },
     login(){
-      request.post('/admin/login',this.form).then(res=>{
-        if(res.code==='200'){
-          this.$router.push('/')
-          console.log(res.data)
-          this.$notify.success("登录成功13")
+      this.$refs['ruleForm'].validate((valid) => {
+        if (valid) {
+          request.post('/admin/login',this.form).then(res=>{
+            if(res.code==='200'){
+             Cookies.set('admin',JSON.stringify(res.data))
+              this.$router.push('/')
+              console.log(res.data)
+              this.$notify.success("登录成功")
+            }else {
+              this.$notify.error(res.msg)
+            }
+          })
+        } else {
+          this.$notify.error("请输入账号在登录")
         }
-      })
+      });
+
     }
   }
 }

@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import Cookies from "js-cookie";
 export default {
   name: "Layout",
   data(){
@@ -42,7 +43,9 @@ export default {
   },
   methods:{
     layout(){
+      Cookies.remove("admin")
       this.$router.push('/login')
+
     }
   }
 }

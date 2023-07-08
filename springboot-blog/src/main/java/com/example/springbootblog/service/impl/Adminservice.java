@@ -3,6 +3,7 @@ package com.example.springbootblog.service.impl;
 import com.example.springbootblog.controller.dto.LoginDTO;
 import com.example.springbootblog.controller.request.LoginRequest;
 import com.example.springbootblog.entity.Admin;
+import com.example.springbootblog.exception.ServiceException;
 import com.example.springbootblog.mapper.AdminMapper;
 import com.example.springbootblog.service.IAdminService;
 import org.springframework.beans.BeanUtils;
@@ -21,9 +22,12 @@ public class Adminservice implements IAdminService {
     @Override
     public LoginDTO login(LoginRequest loginRequest) {
 
-        Admin admin1=adminMapper.login(loginRequest);
+        Admin admin=adminMapper.login(loginRequest);
+        if (admin == null) {
+            throw new ServiceException("用户名或密码错误");
+        }
         LoginDTO login = new LoginDTO();
-        BeanUtils.copyProperties(admin1,login);
+        BeanUtils.copyProperties(admin,login);
         return login;
     }
 }
