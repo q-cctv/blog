@@ -16,6 +16,7 @@ public class Adminservice implements IAdminService {
     AdminMapper adminMapper;
     @Override
     public void register(Admin admin) {
+        admin.setCover("http://img3m7.ddimg.cn/10/30/25276987-1_w_44.jpg");
         adminMapper.register(admin);
     }
 
@@ -29,5 +30,10 @@ public class Adminservice implements IAdminService {
         LoginDTO login = new LoginDTO();
         BeanUtils.copyProperties(admin,login);
         return login;
+    }
+
+    @Override
+    public void updatePass(Admin admin) {
+        adminMapper.updatePass(admin);
     }
 }

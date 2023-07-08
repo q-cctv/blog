@@ -4,9 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springbootblog.mapper.AdminMapper">
     <insert id="register">
-        insert into admin (username, password, phone, address, email)
-        values (#{username},#{password},#{phone},#{address},#{email})
+        insert into admin (username, password, phone, address, email,cover)
+        values (#{username},#{password},#{phone},#{address},#{email},#{cover})
     </insert>
+    <update id="updatePass">
+        update admin set password=#{newPass} where id=#{id}
+    </update>
     <select id="login" resultType="com.example.springbootblog.entity.Admin">
         select * from admin where username=#{username} and password=#{password}
     </select>

@@ -9,4 +9,6 @@ public interface AdminMapper {
     void register(Admin admin);
 
     Admin login(LoginRequest loginRequest);
+
+    void updatePass(Admin admin);
 }

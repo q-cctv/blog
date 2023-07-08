@@ -24,4 +24,9 @@ public class AdminController {
         LoginDTO login=adminservice.login(loginRequest);
         return Result.success(login);
     }
+    @PostMapping("/updatePass")
+    public Result updatePass(@RequestBody Admin admin){
+        adminservice.updatePass(admin);
+        return Result.success();
+    }
 }

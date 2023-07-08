@@ -10,4 +10,6 @@ public interface IAdminService {
 
     LoginDTO login(LoginRequest loginRequest);
 
+    void updatePass(Admin admin);
+
 }

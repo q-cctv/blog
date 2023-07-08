@@ -10,4 +10,6 @@ public class Admin {
     private Integer phone;
     private String address;
     private String email;
+    private String newPass;
+    private String cover;
 }
