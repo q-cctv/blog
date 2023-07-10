@@ -7,7 +7,7 @@
       </div>
       <el-form :model="form" status-icon :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm">
         <el-form-item label="账号" prop="username">
-          <el-input type="text" v-model="form.username" autocomplete="off" style="width: 200px"></el-input>
+          <el-input type="text" v-model="form.username" autocomplete="off" style="width: 200px" @click="yy"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input type="text" v-model="form.password" autocomplete="off" style="width: 200px"></el-input>
@@ -49,6 +49,9 @@ export default {
       }
     }
   },
+  created() {
+
+  },
   methods: {
     reset() {
       this.form = {}
@@ -59,6 +62,8 @@ export default {
           request.post('/admin/register', this.form).then(res => {
             if (res.code === '200') {
               this.$notify.success("注册成功")
+            }else {
+              this.$notify.error(res.msg)
             }
           })
         } else {

@@ -7,6 +7,9 @@ import com.example.springbootblog.entity.Admin;
 import com.example.springbootblog.service.impl.Adminservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 @RestController
 @CrossOrigin
@@ -21,12 +24,43 @@ public class AdminController {
     }
     @PostMapping("/login")
     public Result login(@RequestBody LoginRequest loginRequest){
-        LoginDTO login=adminservice.login(loginRequest);
-        return Result.success(login);
+
+        return Result.success(adminservice.login(loginRequest));
     }
-    @PostMapping("/updatePass")
+    @PutMapping("/update")
+    public Result update(@RequestBody Admin admin){
+        adminservice.update(admin);
+        return Result.success();
+    }
+    @PutMapping("/updatePass")
     public Result updatePass(@RequestBody Admin admin){
         adminservice.updatePass(admin);
         return Result.success();
+    }
+    @GetMapping("/{id}")
+    public Result adminByIdList(@PathVariable Integer id){
+
+        return Result.success(adminservice.adminByIdList(id));
+    }
+
+    @PostMapping("/upload")
+    public Result upload(MultipartFile file){
+        if(file.isEmpty()){
+            return Result.error("文件为空");
+        }
+        long time=System.currentTimeMillis();
+        String OriginalFileName=file.getOriginalFilename();
+        String fileName=time+"."+OriginalFileName.substring(OriginalFileName.lastIndexOf(".")+1);
+        String url="C:\\Users\\Administrator\\Desktop\\blog\\vue\\src\\assets\\img\\";
+        File file1 = new File(url+fileName);
+        if(!file1.getParentFile().exists()){
+            file1.getParentFile().exists();
+        }
+        try {
+            file.transferTo(file1);
+            return Result.success(fileName);
+        }catch (Exception e){
+            return Result.error("上传失败");
+        }
     }
 }

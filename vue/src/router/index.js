@@ -26,6 +26,11 @@ const routes = [
                 name: 'Home',
                 component: () => import('@/views/home/Home')
             },
+            {
+                path: '/personMessage',
+                name: 'PersonMessage',
+                component: () => import('@/views/login/PersonMessage')
+            },
         ]
     },
     {

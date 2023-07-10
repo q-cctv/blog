@@ -12,4 +12,10 @@ public interface IAdminService {
 
     void updatePass(Admin admin);
 
+    LoginDTO adminByIdList(Integer id);
+
+    void update(Admin admin);
+//
+//    void adminByUserName(Admin admin);
+
 }

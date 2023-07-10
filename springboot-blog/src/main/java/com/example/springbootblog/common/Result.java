@@ -26,4 +26,10 @@ public class Result {
         result.setMsg(msg);
         return result;
     }
+    public static Result error(String msg,String code){
+        Result result = new Result();
+        result.setCode(ERROR_CODE);
+        result.setMsg(msg);
+        return result;
+    }
 }

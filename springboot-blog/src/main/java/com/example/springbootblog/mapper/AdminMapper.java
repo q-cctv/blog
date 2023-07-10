@@ -11,4 +11,10 @@ public interface AdminMapper {
     Admin login(LoginRequest loginRequest);
 
     void updatePass(Admin admin);
+
+    Admin adminByIdList(Integer id);
+
+    void update(Admin admin);
+//    int adminByUserName(Admin admin);
+
 }
