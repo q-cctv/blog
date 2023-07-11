@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class Admin {
+public class AdminLogin {
     private Integer id;
     private String username;
     private String password;
@@ -15,5 +15,8 @@ public class Admin {
     private String email;
     private String newPass;
     private String cover;
-    private boolean status;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    private LocalDate createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    private LocalDate updateTime;
 }

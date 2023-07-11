@@ -2,47 +2,40 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springbootblog.mapper.AdminMapper">
+<mapper namespace="com.example.springbootblog.mapper.AdminLoginMapper">
     <insert id="register">
-        insert into admin (username, password, phone, address, email, cover)
+        insert into adminLogin (username, password, phone, address, email, cover)
         values (#{username}, #{password}, #{phone}, #{address}, #{email}, #{cover})
     </insert>
     <update id="updatePass">
-        update admin
+        update adminLogin
         set password=#{newPass}
         where id = #{id}
     </update>
     <update id="update">
-        update admin
+        update adminLogin
         set username=#{username},
             phone=#{phone},
             address=#{address},
             email=#{email} ,
-            cover=#{cover},
-            status=#{status}
+            cover=#{cover}
         where id=#{id}
     </update>
-    <delete id="delUser">
-        delete from admin where id=#{id}
-    </delete>
-    <select id="login" resultType="com.example.springbootblog.entity.Admin">
+    <select id="login" resultType="com.example.springbootblog.entity.AdminLogin">
         select *
-        from admin
+        from adminLogin
         where username = #{username}
           and password = #{password}
     </select>
-    <select id="adminByIdList" resultType="com.example.springbootblog.entity.Admin">
+    <select id="adminByIdList" resultType="com.example.springbootblog.entity.AdminLogin">
         select *
-        from admin
+        from adminLogin
         where id = #{id}
     </select>
     <select id="adminByUserName" resultType="java.lang.Integer">
         select *
-        from admin
+        from adminLogin
         where username = #{username}
-    </select>
-    <select id="getAll" resultType="com.example.springbootblog.entity.Admin">
-        select * from admin
     </select>
 
 </mapper>

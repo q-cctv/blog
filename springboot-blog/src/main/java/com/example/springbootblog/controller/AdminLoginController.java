@@ -1,57 +1,47 @@
 package com.example.springbootblog.controller;
 
 import com.example.springbootblog.common.Result;
-import com.example.springbootblog.controller.dto.LoginDTO;
 import com.example.springbootblog.controller.request.LoginRequest;
 import com.example.springbootblog.entity.Admin;
+import com.example.springbootblog.entity.AdminLogin;
+import com.example.springbootblog.service.impl.AdminLoginservice;
 import com.example.springbootblog.service.impl.Adminservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/adminLogin")
+public class AdminLoginController {
     @Autowired
-    Adminservice adminservice;
-    @GetMapping("/getAll")
-    public Result getAll(){
-        List<Admin> admin=adminservice.getAll();
-        return Result.success(admin);
-    }
+    AdminLoginservice adminLoginservice;
     @PostMapping("/register")
-    public Result register(@RequestBody Admin admin){
-        adminservice.register(admin);
+    public Result register(@RequestBody AdminLogin adminLogin){
+        adminLoginservice.register(adminLogin);
         return Result.success();
     }
     @PostMapping("/login")
     public Result login(@RequestBody LoginRequest loginRequest){
 
-        return Result.success(adminservice.login(loginRequest));
+        return Result.success(adminLoginservice.login(loginRequest));
     }
     @PutMapping("/update")
-    public Result update(@RequestBody Admin admin){
-        adminservice.update(admin);
-        return Result.success();
-    }
-    @DeleteMapping("/delete/{id}")
-    public Result delUser(@PathVariable Integer id){
-        adminservice.delUser(id);
+    public Result update(@RequestBody AdminLogin adminLogin){
+        adminLoginservice.update(adminLogin);
         return Result.success();
     }
     @PutMapping("/updatePass")
-    public Result updatePass(@RequestBody Admin admin){
-        adminservice.updatePass(admin);
+    public Result updatePass(@RequestBody AdminLogin adminLogin){
+        adminLoginservice.updatePass(adminLogin);
         return Result.success();
     }
     @GetMapping("/{id}")
     public Result adminByIdList(@PathVariable Integer id){
 
-        return Result.success(adminservice.adminByIdList(id));
+        return Result.success(adminLoginservice.adminByIdList(id));
     }
 
     @PostMapping("/upload")

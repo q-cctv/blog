@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from "@/views/Layout";
+import AdminLayOut from "@/views/AdminLayOut"
 import Cookies from "js-cookie";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -10,6 +12,31 @@ const routes = [
         name: 'Login',
         component: () => import('@/views/login/Login')
     },
+    {
+        path: '/adminLogin',
+        name: 'adminLogin',
+        component: () => import('@/views/admin/AdminLogin')
+    },
+    {
+        path: '/adminLayOut/',
+        name: 'AdminLayOut',
+        component: AdminLayOut,
+        redirect: '/adminLayOut/adminHome',
+        children: [
+            {
+                path: 'adminHome',
+                name: 'AdminHome',
+                component: () => import('@/views/admin/home/AdminHome')
+            },
+            {
+                path: 'userRights',
+                name: 'UserRights',
+                component: () => import('@/views/admin/UserRights')
+            },
+        ]
+    },
+
+    //前台
     {
         path: '/register',
         name: 'Register',
@@ -22,12 +49,12 @@ const routes = [
         redirect: '/home',
         children: [
             {
-                path: '/home',
+                path: 'home',
                 name: 'Home',
                 component: () => import('@/views/home/Home')
             },
             {
-                path: '/personMessage',
+                path: 'personMessage',
                 name: 'PersonMessage',
                 component: () => import('@/views/login/PersonMessage')
             },
@@ -46,11 +73,11 @@ const router = new VueRouter({
     routes
 })
 router.beforeEach((to, form, next) => {
-    if (to.path === '/login'|| to.path==='/register') {
+    if (to.path === '/login' || to.path === '/register') {
         next()
     }
     const admin = Cookies.get('admin')
-    if (!admin && to.path !== '/login'&& to.path !== '/register') {
+    if (!admin && to.path !== '/login' && to.path !== '/register') {
         return next('/login')
     }
     next()

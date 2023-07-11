@@ -2,7 +2,7 @@
   <div style="height: 100vh;overflow: hidden">
     <div style="display: flex">
       <div style="flex: 1">
-        <el-menu :default-active="$route.path" mode="horizontal"
+        <el-menu :default-active="$route.path" router mode="horizontal"
                  background-color="#545c64"
                  text-color="#fff"
                  active-text-color="#ffd04b" laber-width="100">
@@ -11,7 +11,7 @@
           <el-menu-item index="1">博客</el-menu-item>
           <el-menu-item index="1">留言</el-menu-item>
           <el-menu-item index="1">文章</el-menu-item>
-          <el-menu-item index="1"></el-menu-item>
+          <el-menu-item index="/adminLogin">后台</el-menu-item>
         </el-menu>
       </div>
       <div style="width: 130px;background-color:#545c64;text-align: center;position: relative">
