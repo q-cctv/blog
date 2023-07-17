@@ -62,14 +62,17 @@ public class AdminController {
         long time=System.currentTimeMillis();
         String OriginalFileName=file.getOriginalFilename();
         String fileName=time+"."+OriginalFileName.substring(OriginalFileName.lastIndexOf(".")+1);
-        String url="C:\\Users\\Administrator\\Desktop\\blog\\vue\\src\\assets\\img\\";
+//        String url="C:\\Users\\Administrator\\Desktop\\blog\\vue\\src\\assets\\img\\";
+        String url="C:\\Users\\Administrator\\Desktop\\blog\\upload\\";
         File file1 = new File(url+fileName);
         if(!file1.getParentFile().exists()){
             file1.getParentFile().exists();
         }
         try {
             file.transferTo(file1);
-            return Result.success(fileName);
+            return Result.success("http://localhost:9090/upload/"+fileName);
+//            return Result.success(fileName);
+
         }catch (Exception e){
             return Result.error("上传失败");
         }

@@ -17,9 +17,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AdminLoginservice implements IAdminLoginService {
-    private static final String DEFAULT_SALT="cctv";
     @Autowired
     AdminLoginMapper adminLoginMapper;
+
+    private static final String DEFAULT_SALT="cctv";
+    private String secure(String password){
+        return SecureUtil.md5(password+DEFAULT_SALT);
+
+    }
     @Override
     public void register(AdminLogin adminLogin) {
         adminLogin.setPassword(secure(adminLogin.getPassword()));
@@ -43,6 +48,7 @@ public class AdminLoginservice implements IAdminLoginService {
         return login;
     }
 
+
     @Override
     public void updatePass(AdminLogin adminLogin) {
         adminLoginMapper.updatePass(adminLogin);
@@ -59,11 +65,6 @@ public class AdminLoginservice implements IAdminLoginService {
     @Override
     public void update(AdminLogin adminLogin) {
         adminLoginMapper.update(adminLogin);
-    }
-
-    private String secure(String password){
-        return SecureUtil.md5(password+DEFAULT_SALT);
-
     }
 
 }

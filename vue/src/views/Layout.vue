@@ -6,7 +6,7 @@
                  background-color="#545c64"
                  text-color="#fff"
                  active-text-color="#ffd04b" laber-width="100">
-          <el-menu-item index="1">首页</el-menu-item>
+          <el-menu-item index="/home">首页</el-menu-item>
           <el-menu-item index="1">简历</el-menu-item>
           <el-menu-item index="1">博客</el-menu-item>
           <el-menu-item index="1">留言</el-menu-item>
@@ -15,8 +15,10 @@
         </el-menu>
       </div>
       <div style="width: 130px;background-color:#545c64;text-align: center;position: relative">
-        <el-image :src="require('@/assets/img/'+form.cover)" v-if="cover"
+        <el-image :src="form.cover" v-if="cover" :preview-src-list="[form.cover]"
                   style="width: 40px;height: 40px;position: absolute;left: 35px;border-radius: 50%"></el-image>
+<!--        <el-image :src="require('@/assets/img/'+form.cover)" v-if="cover"-->
+<!--                  style="width: 40px;height: 40px;position: absolute;left: 35px;border-radius: 50%"></el-image>-->
         <el-dropdown :hide-on-click="false" style="margin-top: 39px">
   <span class="el-dropdown-link" style="color: white;">
     {{ admin.username }}<i class="el-icon-arrow-down el-icon--right"></i>

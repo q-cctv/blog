@@ -22,6 +22,15 @@
             <el-menu-item index="UserRights">用户权限</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
+        <el-submenu index="picture">
+          <template slot="title">
+            <i class="el-icon-location"></i>
+            <span>图片管理</span>
+          </template>
+          <el-menu-item-group>
+            <el-menu-item index="picture">图片权限</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
       </el-menu>
     </div>
     <div style="flex: 1;background-color: white;position: relative;">

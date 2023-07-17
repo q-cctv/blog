@@ -8,10 +8,12 @@
       <div style="width: 50px;height: 50px;padding-bottom: 35%;padding-left: 35%">
         <el-upload
             class="avatar-uploader"
-            action="http://localhost:9090/admin/upload"
+            :action="`http://localhost:9090/admin/upload`"
             :show-file-list="false"
             :on-success="handleAvatarSuccess">
-          <img v-if="cover" :src="require('@/assets/img/'+form.cover)" class="avatar" v-model="this.form.cover"
+<!--          <img v-if="cover" :src="require('@/assets/img/'+form.cover)" class="avatar" v-model="this.form.cover"-->
+<!--          >-->
+          <img v-if="form.cover" :src="form.cover" class="avatar" v-model="this.form.cover"
           >
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>

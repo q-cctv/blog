@@ -12,6 +12,7 @@ const routes = [
         name: 'Login',
         component: () => import('@/views/login/Login')
     },
+    //后台
     {
         path: '/adminLogin',
         name: 'adminLogin',
@@ -32,6 +33,16 @@ const routes = [
                 path: 'userRights',
                 name: 'UserRights',
                 component: () => import('@/views/admin/UserRights')
+            },
+            {
+                path: 'picture',
+                name: 'Picture',
+                component: () => import('@/views/admin/picture/Picture')
+            },
+            {
+                path: 'add',
+                name: 'Add',
+                component: () => import('@/views/admin/picture/Add')
             },
         ]
     },
