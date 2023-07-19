@@ -7,16 +7,16 @@
       <el-table-column
           prop="id"
           label="编号"
-          width="70">
+          width="100">
       </el-table-column>
       <el-table-column
           prop="username"
           label="账号"
-          width="70">
+          width="100">
       </el-table-column>
       <el-table-column
           prop="password"
-          label="密码" width="300">
+          label="密码" width="260">
       </el-table-column>
       <el-table-column
           prop="stauts"
@@ -78,6 +78,7 @@ export default {
     load() {
       request.get('/admin/getAll').then(res => {
         if (res.code === '200') {
+          console.log(res.data.length)
           this.tableData = res.data
         }
       })
@@ -86,7 +87,7 @@ export default {
       // JSON.parse(JSON.stringify(row))
       request.put('/admin/update', row).then(res => {
         if (res.code === '200') {
-          this.$notify.success("操作成功")
+            this.$notify.success("启动成功")
           this.load()
         }
       })

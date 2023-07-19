@@ -21,6 +21,8 @@ public interface IPictureService {
 
     List<Picture> list();
 
+    List<Picture> listStatus();
+
 
 
 //

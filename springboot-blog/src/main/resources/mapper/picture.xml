@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springbootblog.mapper.PictureMapper">
     <insert id="add">
-        insert into picture(name,pictur,status) values (#{name},#{pictur},#{status})
+        insert into picture(pictur,status) values (#{pictur},#{status})
     </insert>
 
 
@@ -18,6 +18,9 @@
         delete from picture where id=#{id}
     </delete>
     <select id="list" resultType="com.example.springbootblog.entity.Picture">
+        select * from picture
+    </select>
+    <select id="listStatus" resultType="com.example.springbootblog.entity.Picture">
         select * from picture
     </select>
 

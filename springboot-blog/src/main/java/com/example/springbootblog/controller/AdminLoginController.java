@@ -2,10 +2,8 @@ package com.example.springbootblog.controller;
 
 import com.example.springbootblog.common.Result;
 import com.example.springbootblog.controller.request.LoginRequest;
-import com.example.springbootblog.entity.Admin;
 import com.example.springbootblog.entity.AdminLogin;
-import com.example.springbootblog.service.impl.AdminLoginservice;
-import com.example.springbootblog.service.impl.Adminservice;
+import com.example.springbootblog.service.impl.AdminLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +15,7 @@ import java.io.File;
 @RequestMapping("/adminLogin")
 public class AdminLoginController {
     @Autowired
-    AdminLoginservice adminLoginservice;
+    AdminLoginService adminLoginservice;
     @PostMapping("/register")
     public Result register(@RequestBody AdminLogin adminLogin){
         adminLoginservice.register(adminLogin);

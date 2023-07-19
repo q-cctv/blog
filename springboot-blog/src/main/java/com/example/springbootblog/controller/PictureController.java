@@ -1,11 +1,7 @@
 package com.example.springbootblog.controller;
 
 import com.example.springbootblog.common.Result;
-import com.example.springbootblog.controller.request.LoginRequest;
-import com.example.springbootblog.entity.AdminLogin;
 import com.example.springbootblog.entity.Picture;
-import com.example.springbootblog.mapper.PictureMapper;
-import com.example.springbootblog.service.impl.AdminLoginservice;
 import com.example.springbootblog.service.impl.Pictureservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +19,11 @@ public class PictureController {
     @GetMapping("/list")
     public Result list(){
        List<Picture> picture= pictureservice.list();
+        return Result.success(picture);
+    }
+    @GetMapping("/listStatus")
+    public Result listStatus(){
+        List<Picture> picture= pictureservice.listStatus();
         return Result.success(picture);
     }
     @PostMapping("/add")

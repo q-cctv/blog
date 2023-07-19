@@ -81,16 +81,20 @@ export default {
     load() {
       request.get('/picture/list').then(res => {
         if (res.code === '200') {
-          console.log(res.data)
+           console.log(res.data)
           this.tableData = res.data
         }
       })
     },
     changeStatus(row) {
-      // JSON.parse(JSON.stringify(row))
+      if(row.status===false){
+        this.$notify.success("禁用成功")
+      }else{
+        this.$notify.success("启用成功")
+      }
       request.put('/picture/update', row).then(res => {
         if (res.code === '200') {
-          this.$notify.success("操作成功")
+          // this.$notify.success("操作成功")
           this.load()
         }
       })

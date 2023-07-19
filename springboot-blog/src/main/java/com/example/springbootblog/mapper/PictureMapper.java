@@ -19,6 +19,8 @@ public interface PictureMapper {
 
     List<Picture> list();
 
+    List<Picture> listStatus();
+
 
 
 //    int adminByUserName(Admin admin);

@@ -1,15 +1,14 @@
-
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=GMT%2b8
     username: root
     password: 123456
-#  mvc:
-#    static-path-pattern: /res/**
-#  web:
-#    resources:
-#      static-locations: [classpath:/haha/, classpath/static/]
+  redis:
+    password: 123456
+redis:
+  host: 127.0.0.1
+  port: 6379
 server:
   port: 9090
 mybatis:

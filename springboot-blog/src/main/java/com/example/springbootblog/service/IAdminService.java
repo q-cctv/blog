@@ -23,7 +23,6 @@ public interface IAdminService {
 
 
 
-
 //
 //    void adminByUserName(Admin admin);
 

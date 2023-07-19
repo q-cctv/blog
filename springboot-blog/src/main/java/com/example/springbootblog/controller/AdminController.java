@@ -1,10 +1,9 @@
 package com.example.springbootblog.controller;
 
 import com.example.springbootblog.common.Result;
-import com.example.springbootblog.controller.dto.LoginDTO;
 import com.example.springbootblog.controller.request.LoginRequest;
 import com.example.springbootblog.entity.Admin;
-import com.example.springbootblog.service.impl.Adminservice;
+import com.example.springbootblog.service.impl.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +16,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    Adminservice adminservice;
+    AdminService adminservice;
     @GetMapping("/getAll")
     public Result getAll(){
         List<Admin> admin=adminservice.getAll();

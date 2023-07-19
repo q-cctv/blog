@@ -23,7 +23,7 @@ export default {
   },
   methods:{
     load() {
-      request.get('/picture/list').then(res => {
+      request.get('/picture/listStatus').then(res => {
         if (res.code === '200') {
           console.log(res.data)
           this.form = res.data
